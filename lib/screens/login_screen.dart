@@ -1,120 +1,143 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:lawrental/constants.dart';
 import 'package:lawrental/screens/home_page.dart';
 import 'package:lawrental/screens/sign_page.dart';
 import 'package:lawrental/widgets/custom_button.dart';
-import 'package:lawrental/widgets/textfield_email.dart';
-import 'package:lawrental/widgets/textfield_password.dart';
+import 'package:lawrental/widgets/custom_text_field.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
+  static String id = 'LoginScreen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-          children: [
-            Container(
-              height: 210,
-              width: double.infinity,
-              color: const Color(0xFF14213D),
-              child: const Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text('Welcome to',
-                        style: TextStyle(
-                            fontFamily: "Unigeo64",
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                            decoration: TextDecoration.none)),
-                    Text(
-                      '         Lawrental.',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: "MADEOkine",
-                          fontSize: 48,
-                          fontWeight: FontWeight.w400,
-                          decoration: TextDecoration.none),
-                    )
-                  ],
-                ),
+      body: Column(
+        children: [
+          Container(
+            height: 30.h,
+            width: double.infinity,
+            color: KPrimaryColor,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Welcome to',
+                    style: TextStyle(
+                      fontFamily: "Unigeo64",
+                      fontSize: 20.sp,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '         Lawrental.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "MADEOkine",
+                      fontSize: 29.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
               ),
             ),
-            const SizedBox(
-              height: 70,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(35),
-              child: Column(
-                children: [
-                  TextFieldEmail(
-                    hintText: 'email or phone number',
-                    height: 60,
-                    width: 360,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TextFieldPassword(hintText: 'password', height: 60, width: 360),
-                 const SizedBox(
-                    height: 15,
-                  ),
-                  CustomButton(
-                    text: 'log in',
-                    color: Color(0xFF14213D),
-                    height: 60,
-                    width: 360,
-                    textcolor: Colors.white,
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
-                    },
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Row(
+          ),
+          Expanded(
+            child: ListView(
+              reverse: true,
+              children: [
+                Row(
+                  children: [
+                    ColorFiltered(
+                      colorFilter: ColorFilter.mode(
+                          Colors.white.withOpacity(0.2), BlendMode.dstATop),
+                      child: Image.asset(
+                        ('assets/image/lawrentall.png'),
+                        height: 30.h,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5, bottom: 10),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Don’t have an account?',
+                      Text(
+                        'Don’t have an account? ',
                         style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w200,
-                            fontFamily: "Unigeo64",
-                            color: Colors.black),
+                          fontSize: 16.sp,
+                          fontFamily: "MADEOkine",
+                          color: Colors.black,
+                        ),
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUpPage()));
+                          Navigator.pushNamed(context, SignUpPage.id);
                         },
                         child: const Text(
                           ' sign up',
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF14213D),
-                              fontFamily: "Unigeo64"),
+                              color: KPrimaryColor,
+                              fontFamily: "medium"),
                         ),
                       )
                     ],
                   ),
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 32, right: 32, top: 10, bottom: 10),
+                  child: CustomButton(
+                    text: 'log in',
+                    color: KPrimaryColor,
+                    height: 7.h,
+                    width: 85.w,
+                    textcolor: Colors.white,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()));
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 32, right: 32, top: 10, bottom: 10),
+                  child: customTextField(
+                    height: 2.h,
+                    text: 'password',
+                    width: 85.w,
+                    color: KPrimaryTextFieldColor,
+                    textColor: Colors.white,
+                    fontFamily: 'Unigeo64',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 32, right: 32, top: 10, bottom: 10),
+                  child: customTextField(
+                    height: 2.h,
+                    text: 'email or phone number',
+                    width: 85.w,
+                    color: KPrimaryTextFieldColor,
+                    textColor: Colors.white,
+                    fontFamily: 'Unigeo64',
+                  ),
+                ),
+              ],
             ),
-            Positioned(
-              left: -10,
-              child: ClipRRect(
-                child: Opacity(opacity: 0.2,
-                    child: Image.asset(('assets/lawrentall.png'),width: 375,height: 310,
-                    )),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 }
