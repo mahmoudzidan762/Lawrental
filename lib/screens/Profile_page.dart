@@ -4,11 +4,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
-<<<<<<< HEAD
   static String id = "ProfilePage";
-=======
-
->>>>>>> f19aa386997383b43244555cc8c463926469f24c
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -90,24 +86,12 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           Column(
             children: [
-<<<<<<< HEAD
-              SizedBox(
-                height: 30,
-              ),
-              Image(
-                image: AssetImage(
-                  'assets/image/Favorite.png',
-                ),
-                height: 192,
-                width: 178,
-=======
               Image.asset(
                 'assets/image/Favorite.png',
                 height: 120.h,
               ),
               SizedBox(
                 height: 10.h,
->>>>>>> f19aa386997383b43244555cc8c463926469f24c
               ),
               Text(
                 'add favourite',

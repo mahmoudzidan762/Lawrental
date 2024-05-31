@@ -46,107 +46,6 @@ class _CustomCardLawyerState extends State<CustomCardLawyer> {
                           size: 30.sp,
                           color: Color(0xFF565E74),
                         ),
-<<<<<<< HEAD
-=======
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      border: Border.all(color: const Color(0xFF14213D)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CircleAvatar(
-                                maxRadius: 40,
-                                minRadius: 30,
-                                child: Center(
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.person_rounded,
-                                      size: 65,
-                                      color: Color(0xFF565E74),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(top: 8),
-                                child: Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Muhamed Khaled Muhamed',
-                                        style: TextStyle(
-                                          fontFamily: "Unigeo64",
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 20,
-                                          color: Color(0xFF14213D),
-                                        ),
-                                      ),
-                                       SizedBox(
-                                          height: 5), // Add some spacing here
-                                      Text(
-                                        'Cassation lawyer',
-                                        style: TextStyle(
-                                          fontFamily: "Unigeo64",
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 20,
-                                          color: Color(0xFF14213D),
-                                        ),
-                                      ),
-                                       SizedBox(
-                                          height: 5), // Add some spacing here
-                                      Text(
-                                        'Alexandria',
-                                        style: TextStyle(
-                                          fontFamily: "Unigeo64",
-                                          fontWeight: FontWeight.w200,
-                                          fontSize: 16,
-                                          color: Color(0xFF14213D),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    current = index;
-                                  });
-                                },
-                                icon: Icon(
-                                  Icons.favorite,
-                                  size: 42,
-                                  color: current == index
-                                      ? Colors.white
-                                      : const Color(0xFF14213D),
-                                ),
-                              ),
-                            ],
-                          ),
-                          CustomButton(
-                              text: "Chat",
-                              textColor: Colors.white,
-                              color: const Color(0xFF14213D),
-                              height: 46,
-                              width: 355,
-                          onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> const MessagesPage()));
-                          },
-                          )
-                        ],
->>>>>>> f19aa386997383b43244555cc8c463926469f24c
                       ),
                     ),
                   ),
@@ -201,7 +100,7 @@ class _CustomCardLawyerState extends State<CustomCardLawyer> {
               child: CustomButton(
                 fontSize: 17,
                 text: "chat",
-                textcolor: Colors.white,
+                textColor: Colors.white,
                 color: KPrimaryColor,
                 height: 5.h,
                 width: 80.w,

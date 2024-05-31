@@ -6,12 +6,8 @@ class CustomButton extends StatelessWidget {
       {super.key,
       this.onTap,
       required this.text,
-<<<<<<< HEAD
-       this.fontSize=18,
-      required this.textcolor,
-=======
+      this.fontSize=18,
       required this.textColor,
->>>>>>> f19aa386997383b43244555cc8c463926469f24c
       required this.color,
       required this.height,
       required this.width});
@@ -41,13 +37,8 @@ class CustomButton extends StatelessWidget {
             style: TextStyle(
               color: textColor,
               fontFamily: 'medium',
-<<<<<<< HEAD
-              fontSize: fontSize.sp,
-              fontWeight: FontWeight.bold,
-=======
               fontSize: 18.sp,
             
->>>>>>> f19aa386997383b43244555cc8c463926469f24c
             ),
           )),
         ),
