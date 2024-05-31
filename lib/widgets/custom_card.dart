@@ -126,7 +126,7 @@ class _CustomCardLawyerState extends State<CustomCardLawyer> {
                           ),
                           CustomButton(
                               text: "Chat",
-                              textcolor: Colors.white,
+                              textColor: Colors.white,
                               color: const Color(0xFF14213D),
                               height: 46,
                               width: 355,

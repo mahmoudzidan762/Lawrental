@@ -6,14 +6,14 @@ class CustomButton extends StatelessWidget {
       {super.key,
       this.onTap,
       required this.text,
-      required this.textcolor,
+      required this.textColor,
       required this.color,
       required this.height,
       required this.width});
   String? text;
   VoidCallback? onTap;
   Color? color;
-  Color? textcolor;
+  Color? textColor;
   double height;
   double width;
   @override
@@ -33,10 +33,10 @@ class CustomButton extends StatelessWidget {
               child: Text(
             text!,
             style: TextStyle(
-              color: textcolor,
+              color: textColor,
               fontFamily: 'medium',
               fontSize: 18.sp,
-              fontWeight: FontWeight.bold,
+            
             ),
           )),
         ),

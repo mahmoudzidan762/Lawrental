@@ -65,7 +65,7 @@ class _LawyerProfilePageState extends State<LawyerProfilePage> {
              ),
              CustomButton(
                  text: 'Chat',
-                 textcolor: const Color(0xFF14213D),
+                 textColor: const Color(0xFF14213D),
                  color: Colors.white,
                  height: 60,
                  width: 348),

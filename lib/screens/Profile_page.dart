@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lawrental/widgets/custom_button.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -10,96 +12,98 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [
-        Container(
-          height: 320,
-          width: double.infinity,
-          color: const Color(0xFF14213D),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 60),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView(
+        children: [
+          Container(
+            color: Color(0xff14213D),
             child: Column(
               children: [
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 10, right: 80, bottom: 20),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CircleAvatar(
-                            maxRadius: 50,
-                            minRadius: 40,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.person_rounded,
-                                size: 60,
-                                color: Color(0xFF565E74),
-                              ),
-                            )),
-                        const Text(
-                          'Muhamed Khaled',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 28,
-                              color: Colors.white,
-                              fontFamily: "Unigeo64",
-                              decoration: TextDecoration.none),
-                        )
-                      ]),
+                  padding: const EdgeInsets.only(top: 20, left: 25),
+                  child: Row(children: [
+                    CircleAvatar(
+                        backgroundColor: Color(0xffDDE3EB),
+                        maxRadius: 50,
+                        minRadius: 45,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.person_rounded,
+                            size: 85.sp,
+                            color: Color(0xff565E74),
+                          ),
+                        )),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25, bottom: 25),
+                      child: Text(
+                        'Mahmoud Zidan',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "medium",
+                            fontSize: 18.sp),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                  ]),
+                ),
+                SizedBox(
+                  height: 25.h,
                 ),
                 CustomButton(
                     text: 'edit Profile',
-                    textcolor: Color(0xFF14213D),
+                    textColor: const Color(0xFF14213D),
                     color: Colors.white,
-                    height: 60,
-                    width: 348),
-                const SizedBox(
-                  height: 10,
+                    height: 60.h,
+                    width: 348.w),
+                SizedBox(
+                  height: 10.h,
                 ),
                 CustomButton(
                     text: 'Log out',
-                    textcolor: Color(0xFF9D0101),
+                    textColor: const Color(0xFF9D0101),
                     color: Colors.white,
-                    height: 60,
-                    width: 348)
+                    height: 60.h,
+                    width: 348.w),
+                SizedBox(
+                  height: 25.h,
+                )
               ],
             ),
           ),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(right: 322, top: 12),
-          child: Text(
-            "favorites",
-            style: TextStyle(
-                fontSize: 24,
-                fontFamily: "Unigeo64",
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF14213D),
-                decoration: TextDecoration.none),
+          Padding(
+            padding: const EdgeInsets.only(top: 25, left: 25),
+            child: Text(
+              'favourites',
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        const Center(
-          child: Column(
+          SizedBox(
+            height: 70.h,
+          ),
+          Column(
             children: [
-              SizedBox(height: 30,),
-              Image(
-                  image: AssetImage(
-                'assets/Favorite.png',
-              ),height: 192,width: 178,),
+              Image.asset(
+                'assets/image/Favorite.png',
+                height: 120.h,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
               Text(
-                'add favorites',
+                'add favourite',
                 style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Unigeo64",
-                    color: Color(0xFF14213D),
-                    decoration: TextDecoration.none),
+                    color: Color(0xffA1A6B1),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.sp),
               )
             ],
-          ),
-        )
-      ]),
+          )
+        ],
+      ),
     );
   }
 }

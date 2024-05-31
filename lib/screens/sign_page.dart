@@ -123,7 +123,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       top: 10, bottom: 10, left: 40, right: 40),
                   child: CustomButton(
                     text: 'LAWYER',
-                    textcolor: KPrimaryColor,
+                    textColor: KPrimaryColor,
                     color: Colors.white,
                     height: 7.h,
                     width: 85.w,
@@ -147,7 +147,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       top: 10, bottom: 10, left: 40, right: 40),
                   child: CustomButton(
                     text: 'USER',
-                    textcolor: KPrimaryColor,
+                    textColor: KPrimaryColor,
                     color: Colors.white,
                     height: 7.h,
                     width: 85.w,
