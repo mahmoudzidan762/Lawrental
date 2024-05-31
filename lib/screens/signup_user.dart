@@ -84,7 +84,7 @@ class _SignUpUserState extends State<SignUpUser> {
                     padding: const EdgeInsets.all(8.0),
                     child: CustomButton(
                       text: 'Sign up',
-                      textcolor: const Color(0xFF14213D),
+                      textColor: const Color(0xFF14213D),
                       color: Colors.white,
                       height: 8.h,
                       width: 1.w,

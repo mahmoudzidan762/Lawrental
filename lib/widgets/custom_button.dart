@@ -6,15 +6,19 @@ class CustomButton extends StatelessWidget {
       {super.key,
       this.onTap,
       required this.text,
+<<<<<<< HEAD
        this.fontSize=18,
       required this.textcolor,
+=======
+      required this.textColor,
+>>>>>>> f19aa386997383b43244555cc8c463926469f24c
       required this.color,
       required this.height,
       required this.width});
   String? text;
   VoidCallback? onTap;
   Color? color;
-  Color? textcolor;
+  Color? textColor;
   double height;
   double width;
   double fontSize;
@@ -35,10 +39,15 @@ class CustomButton extends StatelessWidget {
               child: Text(
             text!,
             style: TextStyle(
-              color: textcolor,
+              color: textColor,
               fontFamily: 'medium',
+<<<<<<< HEAD
               fontSize: fontSize.sp,
               fontWeight: FontWeight.bold,
+=======
+              fontSize: 18.sp,
+            
+>>>>>>> f19aa386997383b43244555cc8c463926469f24c
             ),
           )),
         ),

@@ -92,7 +92,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   trailing: CustomButton(
                     text: 'Chat',
-                    textcolor: Colors.white,
+                    textColor: Colors.white,
                     color: const Color(0xFF14213D),
                     height: 46,
                     width: 115,

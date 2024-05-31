@@ -14,6 +14,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
     return Scaffold(
       body: Column(
         children: [
@@ -100,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                     color: KPrimaryColor,
                     height: 7.h,
                     width: 85.w,
-                    textcolor: Colors.white,
+                    textColor: Colors.white,
                     onTap: () {
                       Navigator.push(
                           context,

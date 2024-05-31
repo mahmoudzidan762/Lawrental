@@ -90,7 +90,7 @@ class _SignUpLawyerState extends State<SignUpLawyer> {
                     padding: const EdgeInsets.all(8.0),
                     child: CustomButton(
                       text: 'Sign up',
-                      textcolor: Color(0xFF14213D),
+                      textColor: Color(0xFF14213D),
                       color: Colors.white,
                       height: 8.h,
                       width: 1.w,
