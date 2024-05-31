@@ -6,6 +6,7 @@ class CustomButton extends StatelessWidget {
       {super.key,
       this.onTap,
       required this.text,
+       this.fontSize=18,
       required this.textcolor,
       required this.color,
       required this.height,
@@ -16,6 +17,7 @@ class CustomButton extends StatelessWidget {
   Color? textcolor;
   double height;
   double width;
+  double fontSize;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +37,7 @@ class CustomButton extends StatelessWidget {
             style: TextStyle(
               color: textcolor,
               fontFamily: 'medium',
-              fontSize: 18.sp,
+              fontSize: fontSize.sp,
               fontWeight: FontWeight.bold,
             ),
           )),

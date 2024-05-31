@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lawrental/constants.dart';
 import 'package:lawrental/screens/Profile_page.dart';
 import 'package:lawrental/widgets/bottom_appbar.dart';
 import 'package:lawrental/widgets/custom_card.dart';
 import 'package:lawrental/widgets/tabbar_widget.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,50 +17,54 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
+        body: Column(
       children: [
         Container(
-          height: 150,
+          height: 20.h,
           width: double.infinity,
-          color: const Color(0xFF14213D),
+          color: KPrimaryColor,
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CircleAvatar(
-                  maxRadius: 22,
-                  minRadius: 20,
+                  // maxRadius: 22,
+                  // minRadius: 20,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const ProfilePage()));
+                      Navigator.pushNamed(context, ProfilePage.id);
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.person_rounded,
-                      size: 28,
+                      size: 20.sp,
                       color: Color(0xFF565E74),
                     ),
                   ),
                 ),
-                const Text(
-                  '          Lawrental.',
+                Text(
+                  'Lawrental.',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "MADEOkine",
-                      fontSize: 48,
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none),
+                    color: Colors.white,
+                    fontFamily: "MADEOkine",
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold,
+                    // decoration: TextDecoration.none,
+                  ),
                 ),
               ],
             ),
           ),
         ),
-           const SizedBox(height: 10,),
-           DefaultTabController(length: 4, child:TabBarWidget() ),
-           CustomCardLawyer(),
+        DefaultTabController(length: 4, child: TabBarWidget()),
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (context, index) => CustomCardLawyer(),
+            itemCount: 3,
+          ),
+        ),
       ],
-    )
-
-    );
+    ));
   }
 }

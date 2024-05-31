@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lawrental/constants.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class TabBarWidget extends StatefulWidget {
   const TabBarWidget({Key? key}) : super(key: key);
@@ -8,15 +10,15 @@ class TabBarWidget extends StatefulWidget {
 }
 
 class _TabBarWidgetState extends State<TabBarWidget> {
-  List<String> tabBar = ['Family', 'civil', 'criminal','women'];
+  List<String> tabBar = ['All', 'Family', 'Civil', 'Criminal', 'Women'];
   int current = -1;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 8.h,
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
+        // physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: tabBar.length,
         itemBuilder: (ctx, index) {
@@ -28,15 +30,16 @@ class _TabBarWidgetState extends State<TabBarWidget> {
             },
             child: AnimatedContainer(
               margin: const EdgeInsets.all(5),
-              width: 138,
-              height: 40,
+              width: 32.w,
+              // height: 10.h,
               decoration: BoxDecoration(
-                color: current == index ? const Color(0xFF14213D) : Colors.white,
+                color:
+                    current == index ? const Color(0xFF14213D) : Colors.white,
                 borderRadius: BorderRadius.circular(60),
                 border: Border.all(
-                  color: const Color(0xFF14213D),
+                  color: KPrimaryColor,
                   style: BorderStyle.solid,
-                  width: 1.0,
+                  width: 0.5.w,
                 ),
               ),
               duration: const Duration(milliseconds: 300),
@@ -44,11 +47,12 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                 child: Text(
                   tabBar[index],
                   style: TextStyle(
-                    fontFamily: "Unigeo64",
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color:
-                    current == index ? Colors.white : const Color(0xFF14213D),
+                    fontFamily: "medium",
+                    fontSize: 18.sp,
+                    // fontWeight: FontWeight.bold,
+                    color: current == index
+                        ? Colors.white
+                        : const Color(0xFF14213D),
                   ),
                 ),
               ),

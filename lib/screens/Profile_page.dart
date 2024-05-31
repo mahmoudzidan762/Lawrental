@@ -3,6 +3,7 @@ import 'package:lawrental/widgets/custom_button.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+  static String id = "ProfilePage";
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -82,11 +83,16 @@ class _ProfilePageState extends State<ProfilePage> {
         const Center(
           child: Column(
             children: [
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Image(
-                  image: AssetImage(
-                'assets/Favorite.png',
-              ),height: 192,width: 178,),
+                image: AssetImage(
+                  'assets/image/Favorite.png',
+                ),
+                height: 192,
+                width: 178,
+              ),
               Text(
                 'add favorites',
                 style: TextStyle(

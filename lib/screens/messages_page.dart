@@ -7,6 +7,7 @@ import '../model/message_model.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({Key? key}) : super(key: key);
+  static String id = "MessagesPage";
 
   @override
   State<MessagesPage> createState() => _MessagesPageState();
@@ -38,11 +39,12 @@ class _MessagesPageState extends State<MessagesPage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                             IconButton(
-                              color: Colors.white, onPressed: () {
+                            IconButton(
+                              color: Colors.white,
+                              onPressed: () {
                                 Navigator.pop(context);
-                            },
-                              icon:const Icon(Icons.arrow_back),
+                              },
+                              icon: const Icon(Icons.arrow_back),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
@@ -60,8 +62,12 @@ class _MessagesPageState extends State<MessagesPage> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>const ProfilePage()));
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ProfilePage()));
                               },
                               child: const Text('Muhamed Khaled',
                                   style: TextStyle(
@@ -106,10 +112,14 @@ class _MessagesPageState extends State<MessagesPage> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                const Icon(Icons.image_rounded,color: Color(0xFF14213D)),
-                const Icon(Icons.keyboard_voice_sharp,color: Color(0xFF14213D)),
+                const Icon(Icons.image_rounded, color: Color(0xFF14213D)),
+                const Icon(Icons.keyboard_voice_sharp,
+                    color: Color(0xFF14213D)),
                 Expanded(child: TextFieldEmail(height: 32, width: 306)),
-                const Icon(Icons.send,color: Color(0xFF14213D),)
+                const Icon(
+                  Icons.send,
+                  color: Color(0xFF14213D),
+                )
               ],
             ),
           ),
