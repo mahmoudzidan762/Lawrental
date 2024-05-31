@@ -28,7 +28,7 @@ class LawRental extends StatelessWidget {
             SignUpLawyer.id: (context) => SignUpLawyer(),
             SignUpUser.id: (context) => SignUpUser(),
             ProfilePage.id: (context) => ProfilePage(),
-            MessagesPage.id:(context) => MessagesPage(),
+            MessagesPage.id: (context) => MessagesPage(),
           },
           home: AnimatedSplashScreen(
             duration: 2500,

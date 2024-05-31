@@ -14,51 +14,50 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
+      body: Column(
         children: [
           Container(
+            height: 45.h,
             color: Color(0xff14213D),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 25),
-                  child: Row(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
                     CircleAvatar(
-                        backgroundColor: Color(0xffDDE3EB),
-                        maxRadius: 50,
-                        minRadius: 45,
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.person_rounded,
-                            size: 35.sp,
-                            color: Color(0xff565E74),
-                          ),
-                        )),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, bottom: 25),
-                      child: Text(
-                        'Mahmoud Zidan',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "medium",
-                            fontSize: 18.sp),
+                      backgroundColor: Color(0xffDDE3EB),
+                      maxRadius: 35.sp,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.person_rounded,
+                          size: 45.sp,
+                          color: Color(0xff565E74),
+                        ),
                       ),
                     ),
-                  ]),
+                    Text(
+                      'Mahmoud Zidan',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "medium",
+                          fontSize: 18.sp),
+                    ),
+                  ],
                 ),
                 CustomButton(
                     text: 'edit Profile',
                     textColor: const Color(0xFF14213D),
                     color: Colors.white,
                     height: 6.h,
-                    width: 70.w),
+                    width: 75.w),
                 CustomButton(
                     text: 'Log out',
                     textColor: const Color(0xFF9D0101),
                     color: Colors.white,
                     height: 6.h,
-                    width: 70.w),
+                    width: 75.w),
               ],
             ),
           ),
@@ -71,29 +70,26 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'medium',
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/image/Favorite.png',
-                  height: 15.h,
-                ),
-                Text(
-                  'add favourite',
-                  style: TextStyle(
-                      color: Color(0xffA1A6B1),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp),
-                )
-              ],
-            ),
-          )
+          SizedBox(
+            height: 10.h,
+          ),
+          Image.asset(
+            'assets/image/Favorite.png',
+            height: 15.h,
+          ),
+          Text(
+            'add favourite',
+            style: TextStyle(
+                color: Color(0xffA1A6B1),
+                fontWeight: FontWeight.bold,
+                fontSize: 18.sp),
+          ),
         ],
       ),
     );
