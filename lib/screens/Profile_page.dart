@@ -31,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           onPressed: () {},
                           icon: Icon(
                             Icons.person_rounded,
-                            size: 85.sp,
+                            size: 35.sp,
                             color: Color(0xff565E74),
                           ),
                         )),
@@ -45,62 +45,54 @@ class _ProfilePageState extends State<ProfilePage> {
                             fontSize: 18.sp),
                       ),
                     ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
                   ]),
-                ),
-                SizedBox(
-                  height: 25.h,
                 ),
                 CustomButton(
                     text: 'edit Profile',
                     textColor: const Color(0xFF14213D),
                     color: Colors.white,
-                    height: 60.h,
-                    width: 348.w),
-                SizedBox(
-                  height: 10.h,
-                ),
+                    height: 6.h,
+                    width: 70.w),
                 CustomButton(
                     text: 'Log out',
                     textColor: const Color(0xFF9D0101),
                     color: Colors.white,
-                    height: 60.h,
-                    width: 348.w),
-                SizedBox(
-                  height: 25.h,
-                )
+                    height: 6.h,
+                    width: 70.w),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 25, left: 25),
-            child: Text(
-              'favourites',
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Text(
+                  'favourites',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
-          SizedBox(
-            height: 70.h,
-          ),
-          Column(
-            children: [
-              Image.asset(
-                'assets/image/Favorite.png',
-                height: 120.h,
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Text(
-                'add favourite',
-                style: TextStyle(
-                    color: Color(0xffA1A6B1),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.sp),
-              )
-            ],
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/image/Favorite.png',
+                  height: 15.h,
+                ),
+                Text(
+                  'add favourite',
+                  style: TextStyle(
+                      color: Color(0xffA1A6B1),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp),
+                )
+              ],
+            ),
           )
         ],
       ),

@@ -5,7 +5,6 @@ import 'package:lawrental/screens/signup_lawyer.dart';
 import 'package:lawrental/screens/signup_user.dart';
 import 'package:lawrental/widgets/custom_button.dart';
 import 'package:lawrental/widgets/custom_text_field.dart';
-import 'package:lawrental/widgets/textfield_email.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SignUpPage extends StatefulWidget {
