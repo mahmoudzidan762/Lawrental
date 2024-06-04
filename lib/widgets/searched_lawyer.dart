@@ -8,9 +8,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SearchedLawyer extends StatelessWidget {
   SearchedLawyer({this.lawyerInfo, this.lawyerName, this.photo});
-  String? photo;
-  String? lawyerName;
-  String? lawyerInfo;
+  final String? photo;
+  final String? lawyerName;
+  final String? lawyerInfo;
 
   @override
   Widget build(BuildContext context) {

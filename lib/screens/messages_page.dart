@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lawrental/screens/Profile_page.dart';
 import 'package:lawrental/screens/lawyer_profile_page.dart';
 import 'package:lawrental/widgets/chat_bubble.dart';
 import 'package:lawrental/widgets/textfield_email.dart';

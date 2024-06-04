@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lawrental/constants.dart';
-import 'package:lawrental/screens/Profile_page.dart';
 import 'package:lawrental/screens/chat_page.dart';
 import 'package:lawrental/screens/home_page.dart';
 import 'package:lawrental/screens/searchpage.dart';

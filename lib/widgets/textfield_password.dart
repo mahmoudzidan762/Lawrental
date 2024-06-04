@@ -8,14 +8,14 @@ class TextFieldPassword extends StatefulWidget {
       this.hintText,
       required this.height,
       required this.width});
-  TextInputType? inputType;
+  final TextInputType? inputType;
   final String? hintText;
-  Function(String)? onChanged;
-  double height;
-  double width;
+  final Function(String)? onChanged;
+  final double height;
+  final double width;
   @override
   State<TextFieldPassword> createState() => _TextFieldPasswordState();
-  bool _obscureText = true;
+  final bool _obscureText = true;
 }
 
 class _TextFieldPasswordState extends State<TextFieldPassword> {
@@ -29,11 +29,11 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
         child: TextFormField(
           keyboardType: widget.inputType,
           onChanged: widget.onChanged,
-          validator: (data) {
-            if (data == null || data.isEmpty) {
-              return ('Field is Empty');
-            }
-          },
+          // validator: (data) {
+          //   if (data == null || data.isEmpty) {
+          //     return ('Field is Empty');
+          //   }
+          // },
           obscureText: widget._obscureText,
           decoration: InputDecoration(
               filled: true,

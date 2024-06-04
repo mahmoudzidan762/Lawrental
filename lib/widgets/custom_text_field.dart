@@ -9,10 +9,10 @@ class customTextField extends StatelessWidget {
       this.textColor,
       this.fontFamily});
 
-  Color? color, textColor;
-  double width, height;
-  String text;
-  String? fontFamily;
+  final Color? color, textColor;
+  final double width, height;
+  final String text;
+  final String? fontFamily;
 
   @override
   Widget build(BuildContext context) {

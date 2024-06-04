@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lawrental/screens/searchpage.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({super.key});

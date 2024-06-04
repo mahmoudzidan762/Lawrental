@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lawrental/constants.dart';
-import 'package:lawrental/screens/chat_page.dart';
 import 'package:lawrental/screens/home_page.dart';
 import 'package:lawrental/screens/notification_page.dart';
 import 'package:lawrental/screens/searchpage.dart';
-import 'package:lawrental/widgets/chat_Card.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ChatPage extends StatefulWidget {

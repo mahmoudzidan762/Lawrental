@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lawrental/screens/login_screen.dart';
 import 'package:lawrental/screens/messages_page.dart';
 import 'package:lawrental/widgets/custom_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
