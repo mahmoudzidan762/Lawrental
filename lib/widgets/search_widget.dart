@@ -12,26 +12,26 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130,
+      height: 100,
       width: double.infinity,
-      color: const Color(0xFF14213D),
+      color: Colors.red,
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
-          padding: const EdgeInsets.only(left: 25,right: 25,top: 20,bottom: 13),
+          padding:
+              const EdgeInsets.only(left: 25, right: 25, top: 20, bottom: 13),
           child: TextField(
             decoration: InputDecoration(
                 filled: true,
                 fillColor: Color(0xFFDDE3EB),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(11),
-                  borderSide:  BorderSide.none,
+                  borderSide: BorderSide.none,
                 ),
                 hintStyle: const TextStyle(color: Colors.white),
-                hintText: 'search in Lawrental.',
+                hintText: 'search in ppppppp.',
                 prefixIcon: const Icon(Icons.search),
-                prefixIconColor: const Color(0xFF565E74)
-            ),
+                prefixIconColor: const Color(0xFF565E74)),
           ),
         ),
       ),

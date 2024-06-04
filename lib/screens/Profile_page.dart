@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lawrental/screens/login_screen.dart';
 import 'package:lawrental/widgets/custom_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -53,11 +54,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 6.h,
                     width: 75.w),
                 CustomButton(
-                    text: 'Log out',
-                    textColor: const Color(0xFF9D0101),
-                    color: Colors.white,
-                    height: 6.h,
-                    width: 75.w),
+                  onTap: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, LoginScreen.id, (route) => false);
+                  },
+                  text: 'Log out',
+                  textColor: const Color(0xFF9D0101),
+                  color: Colors.white,
+                  height: 6.h,
+                  width: 75.w,
+                ),
               ],
             ),
           ),

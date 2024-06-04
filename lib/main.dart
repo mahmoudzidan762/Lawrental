@@ -2,8 +2,13 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lawrental/constants.dart';
 import 'package:lawrental/screens/Profile_page.dart';
+import 'package:lawrental/screens/chat_page.dart';
+import 'package:lawrental/screens/home_page.dart';
+import 'package:lawrental/screens/lawyer_profile_page.dart';
 import 'package:lawrental/screens/login_screen.dart';
 import 'package:lawrental/screens/messages_page.dart';
+import 'package:lawrental/screens/notification_page.dart';
+import 'package:lawrental/screens/searchpage.dart';
 import 'package:lawrental/screens/sign_page.dart';
 import 'package:lawrental/screens/signup_lawyer.dart';
 import 'package:lawrental/screens/signup_user.dart';
@@ -29,6 +34,11 @@ class LawRental extends StatelessWidget {
             SignUpUser.id: (context) => SignUpUser(),
             ProfilePage.id: (context) => ProfilePage(),
             MessagesPage.id: (context) => MessagesPage(),
+            SearchPage.id: (context) => SearchPage(),
+            NotificationPage.id: (context) => NotificationPage(),
+            ChatPage.id: (context) => ChatPage(),
+            HomePage.id: (context) => HomePage(),
+            LawyerProfilePage.id: (context) => LawyerProfilePage(),
           },
           home: AnimatedSplashScreen(
             duration: 2500,

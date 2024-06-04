@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lawrental/screens/login_screen.dart';
+import 'package:lawrental/screens/messages_page.dart';
 import 'package:lawrental/widgets/custom_button.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+
 class LawyerProfilePage extends StatefulWidget {
   const LawyerProfilePage({super.key});
+  static String id = "LawyerProfilePage";
 
   @override
   State<LawyerProfilePage> createState() => _LawyerProfilePageState();
@@ -10,70 +15,55 @@ class LawyerProfilePage extends StatefulWidget {
 class _LawyerProfilePageState extends State<LawyerProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child:Column(children: [
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
           Container(
-          height: 320,
-          width: double.infinity,
-          color: const Color(0xFF14213D),
-         child: Column(
-           children: [
-             Padding(
-              padding: const EdgeInsets.only(right:80,left: 35,top:80 ),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     CircleAvatar(
-                         maxRadius: 50,
-                         minRadius: 40,
-                         child: IconButton(
-                           onPressed: () {},
-                           icon: const Icon(
-                             Icons.person_rounded,
-                             size: 60,
-                             color: Color(0xFF565E74),
-                           ),
-                         )),
-                     const Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                       children: [
-                          Text(
-                           'Muhamed Khaled',
-                           style: TextStyle(
-                               fontWeight: FontWeight.bold,
-                               fontSize: 26,
-                               color: Colors.white,
-                               fontFamily: "Unigeo64",
-                               decoration: TextDecoration.none),
-                         ),
-                         Text(
-                           'Cassation lawyer',
-                           style:  TextStyle(
-                               color: Colors.white,
-                               fontWeight: FontWeight.w300,
-                               fontFamily: "Unigeo64",
-                               fontSize: 16,
-                           decoration: TextDecoration.none
-                           ),
-                         ),
-                       ],
-                     )
-                   ]),
-              ),
-             const SizedBox(
-               height: 60
-             ),
-             CustomButton(
-                 text: 'Chat',
-                 textColor: const Color(0xFF14213D),
-                 color: Colors.white,
-                 height: 60,
-                 width: 348),
-           ],
-         ),
-          )
-    ]
-    )
+            height: 35.h,
+            color: Color(0xff14213D),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Color(0xffDDE3EB),
+                      maxRadius: 35.sp,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.person_rounded,
+                          size: 45.sp,
+                          color: Color(0xff565E74),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Mahmoud Zidan',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "medium",
+                          fontSize: 18.sp),
+                    ),
+                  ],
+                ),
+                CustomButton(
+                    onTap: () {
+                      Navigator.pushNamed(context, MessagesPage.id);
+                    },
+                    text: 'CHAT',
+                    textColor: const Color(0xFF14213D),
+                    color: Colors.white,
+                    height: 6.h,
+                    width: 75.w),
+              ],
+            ),
+          ),
+          Text('Lawyer Information'),
+        ],
+      ),
     );
   }
 }

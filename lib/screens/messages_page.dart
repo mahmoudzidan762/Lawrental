@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lawrental/screens/Profile_page.dart';
+import 'package:lawrental/screens/lawyer_profile_page.dart';
 import 'package:lawrental/widgets/chat_bubble.dart';
 import 'package:lawrental/widgets/textfield_email.dart';
 
@@ -63,11 +64,8 @@ class _MessagesPageState extends State<MessagesPage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ProfilePage()));
+                                Navigator.pushNamed(
+                                    context, LawyerProfilePage.id);
                               },
                               child: const Text('Muhamed Khaled',
                                   style: TextStyle(
