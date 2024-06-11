@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lawrental/constants.dart';
 import 'package:lawrental/model/lawyer_model.dart';
 import 'package:lawrental/screens/chat_page.dart';
 import 'package:lawrental/screens/home_page.dart';
+import 'package:lawrental/screens/lawyer_profile_page.dart';
 import 'package:lawrental/screens/notification_page.dart';
 import 'package:lawrental/widgets/searched_lawyer.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -19,24 +21,30 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   int curridx = 1;
   bool selected = true;
+  List<QueryDocumentSnapshot> searched = [];
+  List<QueryDocumentSnapshot> lawyers = [];
+  TextEditingController searchField = TextEditingController();
 
-  static List<LawyerModel> LawerModel_list = [
-    LawyerModel('Muhamed Khaled', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Ahmed Khaled', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Mostafa muhamed', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Anas Ibrahim', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Abdulrahman ahmed', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Mahmoud Khaled', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Waled muhamed', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Motaz Khaled', 'Cassation lawyer', 'assets/Favorite.png'),
-    LawyerModel('Amr Khaled', 'Cassation lawyer', 'assets/Favorite.png'),
-  ];
-  List<LawyerModel> display_list = List.from(LawerModel_list);
-  void updateList(String value) {
-    setState(() {
-      display_list = LawerModel_list.where((element) =>
-          element.title!.toLowerCase().contains(value.toLowerCase())).toList();
-    });
+  bind() {
+    searched = lawyers
+        .where((e) => (e['first name'] as String)
+            .toLowerCase()
+            .contains(searchField.text.toLowerCase()))
+        .toList();
+    setState(() {});
+  }
+
+  getLawyers() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('Lawyer Info').get();
+    lawyers.addAll(querySnapshot.docs); 
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getLawyers();
+    super.initState();
   }
 
   Color getColor(bool s) {
@@ -125,8 +133,16 @@ class _SearchPageState extends State<SearchPage> {
                 child: Container(
                   height: 6.h,
                   child: TextField(
+                    controller: searchField,
                     textAlignVertical: TextAlignVertical.bottom,
-                    onChanged: (value) => updateList(value),
+                    onChanged: (value) {
+                      if (!value.isEmpty) {
+                        bind();
+                      } else {
+                        searched.clear();
+                        setState(() {});
+                      }
+                    },
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFDDE3EB),
@@ -153,11 +169,28 @@ class _SearchPageState extends State<SearchPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: display_list.length,
+              itemCount: searched.length,
               itemBuilder: (context, index) {
-                return SearchedLawyer(
-                  lawyerName: display_list[index].title,
-                  lawyerInfo: display_list[index].subTitle,
+                LawyerModel lawyerModel = LawyerModel(
+                    about_me: searched[index]['about me'],
+                    photo: searched[index]['image Profile Url'],
+                    experience: searched[index]['experience'],
+                    first_address: searched[index]['first address'],
+                    second_address: searched[index]['second address'],
+                    first_name: searched[index]['first name'],
+                    last_name: searched[index]['last name'],
+                    gender: searched[index]['gender'],
+                    phone: searched[index]['phone'],
+                    specialty: searched[index]['specialty']);
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, LawyerProfilePage.id,
+                        arguments: lawyerModel);
+                  },
+                  child: SearchedLawyer(
+                    lawyerName: searched[index]['first name'],
+                    lawyerInfo: searched[index]['about me'],
+                  ),
                 );
                 //   ListTile(
                 //     title: GestureDetector(

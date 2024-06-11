@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "29752095109",
+    "project_id": "lawrental",
+    "storage_bucket": "lawrental.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29752095109:android:c3ab85029c173c5dca94ec",
+        "android_client_info": {
+          "package_name": "com.example.lawrental"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCls-nryeyJkiR414tIFQfUmlJA4JbdC10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

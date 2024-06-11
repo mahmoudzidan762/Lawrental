@@ -1,8 +1,9 @@
 class Message {
-  String? text;
-  DateTime date;
-  bool? isSentByMe;
-
-  Message(this.text,this.date,this.isSentByMe);
-
+  final String message;
+  final String id;
+  final String to;
+  Message(this.message, this.id,  this.to);
+  factory Message.fromjeson(data) {
+    return Message(data['message'], data['id'],data['imageUrl']);
+  }
 }

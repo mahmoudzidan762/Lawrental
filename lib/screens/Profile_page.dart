@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lawrental/constants.dart';
 import 'package:lawrental/screens/login_screen.dart';
 import 'package:lawrental/widgets/custom_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -11,6 +14,29 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  List<QueryDocumentSnapshot> allDocs = [];
+  String? photo;
+
+  getLawyers() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('Lawyer Info')
+        .where('id', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    allDocs.addAll(querySnapshot.docs);
+    setState(() {});
+    for (int i = 0; i < allDocs.length; i++) {
+      if (allDocs[i]['id'] == FirebaseAuth.instance.currentUser!.uid) {
+        photo = allDocs[i]['image Profile Url'];
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    getLawyers();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,20 +52,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CircleAvatar(
-                      backgroundColor: Color(0xffDDE3EB),
-                      maxRadius: 35.sp,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.person_rounded,
-                          size: 45.sp,
-                          color: Color(0xff565E74),
-                        ),
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: KPrimaryColor,
                       ),
+                      width: 35.w,
+                      height: 20.h,
+                      child: (photo == null)
+                          ? Text('deta')
+                          : Image.network(photo!),
                     ),
                     Text(
-                      'Mahmoud Zidan',
+                      FirebaseAuth.instance.currentUser!.displayName.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: "medium",
@@ -47,12 +73,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ],
                 ),
-                CustomButton(
-                    text: 'edit Profile',
-                    textColor: const Color(0xFF14213D),
-                    color: Colors.white,
-                    height: 6.h,
-                    width: 75.w),
                 CustomButton(
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(

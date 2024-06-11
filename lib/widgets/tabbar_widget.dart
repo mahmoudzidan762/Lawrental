@@ -10,7 +10,7 @@ class TabBarWidget extends StatefulWidget {
 }
 
 class _TabBarWidgetState extends State<TabBarWidget> {
-  List<String> tabBar = ['All', 'Family', 'Civil', 'Criminal', 'Women'];
+  List<String> tabBar = ['All', 'man','woman'];
   int current = -1;
 
   @override

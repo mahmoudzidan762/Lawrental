@@ -55,7 +55,7 @@ class SearchedLawyer extends StatelessWidget {
                     '${lawyerInfo!.split(' ')[0]}...',
                     style: TextStyle(
                       fontSize: 15.sp,
-                      fontFamily: 'thin',
+                      fontFamily: 'medium',
                       fontWeight: FontWeight.bold,
                     ),
                   ),

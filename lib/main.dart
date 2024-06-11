@@ -14,8 +14,16 @@ import 'package:lawrental/screens/signup_lawyer.dart';
 import 'package:lawrental/screens/signup_user.dart';
 import 'package:lawrental/screens/splash_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() => runApp(const LawRental());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const LawRental());
+}
 
 class LawRental extends StatelessWidget {
   const LawRental({super.key});

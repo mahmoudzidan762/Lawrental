@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lawrental/constants.dart';
+import 'package:lawrental/model/lawyer_model.dart';
 import 'package:lawrental/screens/Profile_page.dart';
 import 'package:lawrental/screens/chat_page.dart';
+import 'package:lawrental/screens/lawyer_profile_page.dart';
 import 'package:lawrental/screens/notification_page.dart';
 import 'package:lawrental/screens/searchpage.dart';
 import 'package:lawrental/widgets/custom_card_lawyer.dart';
@@ -19,11 +22,46 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int curridx = 0;
   bool selected = true;
+  List<QueryDocumentSnapshot> lawyers = [];
+  List<QueryDocumentSnapshot> mans = [];
+  List<QueryDocumentSnapshot> womans = [];
+
   Color getColor(bool s) {
     if (s)
       return KPrimaryColor;
     else
       return Color.fromARGB(255, 109, 111, 122);
+  }
+
+  bind1() {
+    mans = lawyers
+        .where((element) => (element['gender'] as String)
+            .toLowerCase()
+            .contains('man'.toLowerCase()))
+        .toList();
+    setState(() {});
+  }
+
+  bind2() {
+    womans = lawyers
+        .where((element) => (element['gender'] as String)
+            .toLowerCase()
+            .contains('woman'.toLowerCase()))
+        .toList();
+    setState(() {});
+  }
+
+  getLawyers() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('Lawyer Info').get();
+    lawyers.addAll(querySnapshot.docs);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getLawyers();
+    super.initState();
   }
 
   @override
@@ -132,11 +170,37 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            DefaultTabController(length: 4, child: TabBarWidget()),
+            DefaultTabController(length: 3, child: TabBarWidget()),
             Expanded(
               child: ListView.builder(
-                itemBuilder: (context, index) => CustomCardLawyer(),
-                itemCount: 4,
+                itemBuilder: (context, index) {
+                  LawyerModel lawyerModel = LawyerModel(
+                      about_me: lawyers[index]['about me'],
+                      photo: lawyers[index]['image Profile Url'],
+                      experience: lawyers[index]['experience'],
+                      first_address: lawyers[index]['first address'],
+                      second_address: lawyers[index]['second address'],
+                      first_name: lawyers[index]['first name'],
+                      last_name: lawyers[index]['last name'],
+                      gender: lawyers[index]['gender'],
+                      phone: lawyers[index]['phone'],
+                      specialty: lawyers[index]['specialty']);
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, LawyerProfilePage.id,
+                          arguments: lawyerModel);
+                    },
+                    child: CustomCardLawyer(
+                      profileImageCard: Image.network(
+                        '${lawyerModel.photo}',
+                      ),
+                      lawyerName: lawyers[index]['first name'],
+                      lawyerspecialty: lawyers[index]['specialty'],
+                      about_me: lawyers[index]['about me'],
+                    ),
+                  );
+                },
+                itemCount: lawyers.length,
               ),
             ),
           ],

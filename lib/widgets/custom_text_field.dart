@@ -1,42 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:lawrental/constants.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
-class customTextField extends StatelessWidget {
-  customTextField(
-      {this.height = 50,
-      this.color,
-      this.width = 50,
+class customTextFormField extends StatelessWidget {
+  customTextFormField(
+      {this.controller,
+      this.validator,
+      this.keyboardType,
+      this.onChanged,
+      this.textSize,
+      this.obscureText = false,
       required this.text,
-      this.textColor,
-      this.fontFamily});
+      this.borderSide = const BorderSide(),
+      this.color = Colors.white,
+      this.textColor = Colors.grey});
 
-  final Color? color, textColor;
-  final double width, height;
-  final String text;
-  final String? fontFamily;
+  String text;
+  Color color, textColor;
+  void Function(String)? onChanged;
+  String? Function(String?)? validator;
+  TextEditingController? controller;
+  BorderSide? borderSide;
+  TextInputType? keyboardType;
+  bool obscureText;
+  double? textSize;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: color,
-      ),
-      child: TextField(
-        decoration: InputDecoration(
-          contentPadding:
-              EdgeInsets.symmetric(vertical: height, horizontal: 16),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          label: Text(
-            text,
-            style: TextStyle(
-                color: textColor,
-                fontFamily: fontFamily,
-                fontWeight: FontWeight.bold),
-          ),
+    return TextFormField(
+      obscureText: obscureText,
+      keyboardType: keyboardType,
+      controller: controller,
+      validator: validator,
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: KPrimaryTextFieldColor,
+        hintText: text,
+        hintStyle: TextStyle(
+          color: Colors.white,
+          fontSize: textSize,
+          fontFamily: 'medium',
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(13),
         ),
       ),
     );
