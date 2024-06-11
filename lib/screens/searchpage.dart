@@ -37,7 +37,7 @@ class _SearchPageState extends State<SearchPage> {
   getLawyers() async {
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection('Lawyer Info').get();
-    lawyers.addAll(querySnapshot.docs); 
+    lawyers.addAll(querySnapshot.docs);
     setState(() {});
   }
 
@@ -184,12 +184,15 @@ class _SearchPageState extends State<SearchPage> {
                     specialty: searched[index]['specialty']);
                 return GestureDetector(
                   onTap: () {
+                    print(
+                        '==================================${lawyerModel.first_name}');
                     Navigator.pushNamed(context, LawyerProfilePage.id,
                         arguments: lawyerModel);
                   },
                   child: SearchedLawyer(
                     lawyerName: searched[index]['first name'],
                     lawyerInfo: searched[index]['about me'],
+                    photo: searched[index]['image Profile Url'],
                   ),
                 );
                 //   ListTile(

@@ -28,13 +28,14 @@ class SearchedLawyer extends StatelessWidget {
             CircleAvatar(
               backgroundColor: KPrimaryTextFieldColor,
               maxRadius: 35.Q,
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.person_rounded,
-                  size: 30.sp,
-                  color: Color(0xFF565E74),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
                 ),
+                clipBehavior: Clip.antiAlias,
+                width: 15.w,
+                height: 25.h,
+                child: Image.network(photo!),
               ),
             ),
             Padding(

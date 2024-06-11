@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:lawrental/constants.dart';
 import 'package:lawrental/model/lawyer_model.dart';
 import 'package:lawrental/screens/Profile_page.dart';
@@ -7,6 +8,7 @@ import 'package:lawrental/screens/chat_page.dart';
 import 'package:lawrental/screens/lawyer_profile_page.dart';
 import 'package:lawrental/screens/notification_page.dart';
 import 'package:lawrental/screens/searchpage.dart';
+import 'package:lawrental/widgets/custom_button.dart';
 import 'package:lawrental/widgets/custom_card_lawyer.dart';
 import 'package:lawrental/widgets/tabbar_widget.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -22,6 +24,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int curridx = 0;
   bool selected = true;
+  bool Man = false;
+  bool Woman = false;
   List<QueryDocumentSnapshot> lawyers = [];
   List<QueryDocumentSnapshot> mans = [];
   List<QueryDocumentSnapshot> womans = [];
@@ -66,6 +70,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('================================${mans.length}');
+    print('================================${womans.length}');
     return Scaffold(
         extendBody:
             true, // This will make the body extend under the navigation bar
@@ -170,39 +176,153 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            DefaultTabController(length: 3, child: TabBarWidget()),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  LawyerModel lawyerModel = LawyerModel(
-                      about_me: lawyers[index]['about me'],
-                      photo: lawyers[index]['image Profile Url'],
-                      experience: lawyers[index]['experience'],
-                      first_address: lawyers[index]['first address'],
-                      second_address: lawyers[index]['second address'],
-                      first_name: lawyers[index]['first name'],
-                      last_name: lawyers[index]['last name'],
-                      gender: lawyers[index]['gender'],
-                      phone: lawyers[index]['phone'],
-                      specialty: lawyers[index]['specialty']);
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, LawyerProfilePage.id,
-                          arguments: lawyerModel);
-                    },
-                    child: CustomCardLawyer(
-                      profileImageCard: Image.network(
-                        '${lawyerModel.photo}',
-                      ),
-                      lawyerName: lawyers[index]['first name'],
-                      lawyerspecialty: lawyers[index]['specialty'],
-                      about_me: lawyers[index]['about me'],
-                    ),
-                  );
-                },
-                itemCount: lawyers.length,
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomButton(
+                      onTap: () {
+                        setState(() {
+                          Man = false;
+                          Woman = false;
+                        });
+                      },
+                      text: 'all',
+                      textColor: Colors.white,
+                      color: KPrimaryColor,
+                      height: 7.h,
+                      width: 25.w),
+                  CustomButton(
+                      onTap: () {
+                        setState(() {
+                          Man = true;
+                          Woman = false;
+                          bind1();
+                        });
+                      },
+                      text: 'man',
+                      textColor: Colors.white,
+                      color: KPrimaryColor,
+                      height: 7.h,
+                      width: 25.w),
+                  CustomButton(
+                      onTap: () {
+                        setState(() {
+                          Man = false;
+                          Woman = true;
+                          bind2();
+                        });
+                      },
+                      text: 'woman',
+                      textColor: Colors.white,
+                      color: KPrimaryColor,
+                      height: 7.h,
+                      width: 25.w),
+                ],
               ),
             ),
+            // DefaultTabController(length: 3, child: TabBarWidget()),
+            (Man)
+                ? Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        LawyerModel lawyerModel = LawyerModel(
+                            about_me: mans[index]['about me'],
+                            photo: mans[index]['image Profile Url'],
+                            experience: mans[index]['experience'],
+                            first_address: mans[index]['first address'],
+                            second_address: mans[index]['second address'],
+                            first_name: mans[index]['first name'],
+                            last_name: mans[index]['last name'],
+                            gender: mans[index]['gender'],
+                            phone: mans[index]['phone'],
+                            specialty: mans[index]['specialty']);
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, LawyerProfilePage.id,
+                                arguments: lawyerModel);
+                          },
+                          child: CustomCardLawyer(
+                            profileImageCard: Image.network(
+                              '${lawyerModel.photo}',
+                            ),
+                            lawyerName: mans[index]['first name'],
+                            lawyerspecialty: mans[index]['specialty'],
+                            about_me: mans[index]['about me'],
+                          ),
+                        );
+                      },
+                      itemCount: mans.length,
+                    ),
+                  )
+                : (Woman)
+                    ? Expanded(
+                        child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            LawyerModel lawyerModel = LawyerModel(
+                                about_me: womans[index]['about me'],
+                                photo: womans[index]['image Profile Url'],
+                                experience: womans[index]['experience'],
+                                first_address: womans[index]['first address'],
+                                second_address: womans[index]['second address'],
+                                first_name: womans[index]['first name'],
+                                last_name: womans[index]['last name'],
+                                gender: womans[index]['gender'],
+                                phone: womans[index]['phone'],
+                                specialty: womans[index]['specialty']);
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, LawyerProfilePage.id,
+                                    arguments: lawyerModel);
+                              },
+                              child: CustomCardLawyer(
+                                profileImageCard: Image.network(
+                                  '${lawyerModel.photo}',
+                                ),
+                                lawyerName: womans[index]['first name'],
+                                lawyerspecialty: womans[index]['specialty'],
+                                about_me: womans[index]['about me'],
+                              ),
+                            );
+                          },
+                          itemCount: womans.length,
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            LawyerModel lawyerModel = LawyerModel(
+                                about_me: lawyers[index]['about me'],
+                                photo: lawyers[index]['image Profile Url'],
+                                experience: lawyers[index]['experience'],
+                                first_address: lawyers[index]['first address'],
+                                second_address: lawyers[index]
+                                    ['second address'],
+                                first_name: lawyers[index]['first name'],
+                                last_name: lawyers[index]['last name'],
+                                gender: lawyers[index]['gender'],
+                                phone: lawyers[index]['phone'],
+                                specialty: lawyers[index]['specialty']);
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, LawyerProfilePage.id,
+                                    arguments: lawyerModel);
+                              },
+                              child: CustomCardLawyer(
+                                profileImageCard: Image.network(
+                                  '${lawyerModel.photo}',
+                                ),
+                                lawyerName: lawyers[index]['first name'],
+                                lawyerspecialty: lawyers[index]['specialty'],
+                                about_me: lawyers[index]['about me'],
+                              ),
+                            );
+                          },
+                          itemCount: lawyers.length,
+                        ),
+                      ),
           ],
         ));
   }
